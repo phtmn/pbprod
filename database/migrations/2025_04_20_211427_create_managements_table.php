@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('managements', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();;    
-            $table->string('name')->nullable();;            
-            $table->text('description')->nullable();;
+            $table->string('acronym')->nullable();    
+            $table->string('name')->nullable();                      
             $table->timestamps();
             $table->softDeletes();
         });

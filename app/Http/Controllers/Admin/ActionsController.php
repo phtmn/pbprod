@@ -50,9 +50,9 @@ class ActionsController extends Controller
      */
     public function edit(string $id)
     {
-        return view('auth.admin.tools.edit', [
+        return view('auth.admin.actions.edit', [
             'user' => Auth::User(),
-            'tool' => Action::find($id)
+            'action' => Action::find($id)
         ]);
     }
 
@@ -61,18 +61,14 @@ class ActionsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Action::where('id', $id)
-            ->update([
-                'name' => $request->name,
-                'site' => $request->site,
-                'description' => $request->description,
-                'tiktok' => $request->tiktok,
-                'youtube' => $request->youtube,
-                'facebook' => $request->facebook,
-                'instagram' => $request->instagram,
-                'twitter' => $request->twitter,
-                'linkedin' => $request->linkedin
-            ]);
+        
+        $validated = $request->validate([
+            'number' => 'nullable|integer',
+            'title' => 'required|string|max:255'
+        ]);
+    
+        $action = Action::findOrFail($id);
+        $action->update($validated);
 
         return redirect()->route('actions.index');
     }

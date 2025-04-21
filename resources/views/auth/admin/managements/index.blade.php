@@ -32,16 +32,16 @@
                                 @forelse ($managements as $d)
                                 <tr>
                                     <td class="text-left">
-                                        <form action="{{ route('users.destroy', $d->id) }}"
+                                        <form action="{{ route('managements.destroy', $d->id) }}"
                                             method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="{{ route('users.edit', $d->id) }}"
+                                            <a href="{{ route('managements.edit', $d->id) }}"
                                             class=" bg-light text-dark fs-6 d-block text-wrap py-2 mb-2"
                                             style="max-width: 100%; white-space: normal;">
-                                                {{ $d->description }}
+                                                {{ $d->name }}
                                             </a>
-                                            <p><span class="badge bg-dark fs-sm">{{ $d->title }}</span></p>
+                                            <p><span class="badge bg-dark fs-sm">{{ $d->acronym }}</span></p>
                                     </td>
 
                                     <td class="text-end">
@@ -53,7 +53,6 @@
                                             </form>
                                         </div>
                                     </td>
-
                                 </tr>
                                 @empty
                                 <p class="text-warning">Nenhum Cadastro</p>

@@ -33,25 +33,17 @@ class UserController extends Controller
     public function store(Request $request)
     {
         
-
         User::create([
             'name' => $request->name,
-            'email' => $request->email,
-            'usertype' => $request->usertype,
             'whatsapp' => $request->whatsapp,
-            'bio' => $request->bio,
+            'registration' => $request->registration,
+            'email' => $request->email,
+            'profile' => $request->profile,
+            'management' => $request->management,            
             'password' => Hash::make($request->password),            
         ]);
 
         return redirect()->route('users.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**

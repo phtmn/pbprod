@@ -35,9 +35,8 @@ class ManagementsController extends Controller
     public function store(Request $request)
     {
         Management::create([
-            'title' => $request->title,
-            'name' => $request->name,
-            'description' => $request->description
+            'acronym' => $request->acronym,
+            'name' => $request->name             
         ]);
 
         return redirect()->route('managements.index');
@@ -46,9 +45,12 @@ class ManagementsController extends Controller
 
     public function edit(string $id)
     {
-        $managements = Management::findOrFail($id);
-        return view('managements.edit', compact('managements'));
+        return view('auth.admin.managements.edit', [
+            'user' => Auth::User(),
+            'managements' => Management::find($id)
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -56,14 +58,15 @@ class ManagementsController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'acronym' => 'nullable',
+            'name' => 'required|string|max:255'
         ]);
+    
+        $management = Management::findOrFail($id);
+        $management->update($validated);
 
-        $managements = Management::findOrFail($id);
-        $managements->update($validated);
+        return redirect()->route('managements.index');
 
-        return redirect()->route('superadmin.management.index')->with('success', 'Atualizado com sucesso.');
     }
 
     /**
@@ -71,7 +74,6 @@ class ManagementsController extends Controller
      */
     public function destroy(string $id)
     {
-
         Management::find($id)->delete();
         return redirect()->route('managements.index');
     }

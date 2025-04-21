@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Management extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'managements'; 
 
     protected $fillable = [
-        'title',
-        'name',
-        'description',
+        'acronym',
+        'name',     
     ];
 
     
