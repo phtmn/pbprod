@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\SAdmin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\SAdmin\Management;
+use App\Models\Admin\Management;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,9 +14,8 @@ class ManagementsController extends Controller
      */
     public function index()
     {
-        
 
-        return view('auth.sadmin.managements.index', [
+        return view('auth.admin.managements.index', [
             'user' => Auth::User(),
             'managements' => Management::all()
         ]);
@@ -27,7 +26,7 @@ class ManagementsController extends Controller
      */
     public function create()
     {
-        return view('auth.sadmin.managements.create');
+        return view('auth.admin.managements.create');
     }
 
     /**
@@ -38,13 +37,13 @@ class ManagementsController extends Controller
         Management::create([
             'title' => $request->title,
             'name' => $request->name,
-            'description' => $request->description                        
+            'description' => $request->description
         ]);
 
-        return view('auth.sadmin.managements.index');
-
+        return redirect()->route('managements.index');
     }
-     
+
+
     public function edit(string $id)
     {
         $managements = Management::findOrFail($id);
@@ -72,9 +71,8 @@ class ManagementsController extends Controller
      */
     public function destroy(string $id)
     {
-       
+
         Management::find($id)->delete();
         return redirect()->route('managements.index');
-        
     }
 }

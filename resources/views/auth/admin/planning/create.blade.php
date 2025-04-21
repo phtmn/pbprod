@@ -1,8 +1,8 @@
-@extends('layouts.SAdmin.app')
+@extends('layouts.Admin.app')
 @section('content')
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
     <div class="row pt-sm-2 pt-lg-0">
-        @include('layouts.SAdmin.sidebar')
+        @include('layouts.Admin.sidebar')
         <div class="col-lg-9 pt-4 pb-1 mt-2 pb-sm-4">
 
             <section class="card border-2 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4 ">

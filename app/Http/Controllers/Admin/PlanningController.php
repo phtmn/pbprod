@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\SAdmin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\SAdmin\Planning;
+use App\Models\Admin\Planning;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +16,7 @@ class PlanningController extends Controller
     {
         
 
-        return view('auth.sadmin.planning.index', [
+        return view('auth.admin.planning.index', [
             'user' => Auth::User()
             //'planning' => Planning::all()
         ]);
@@ -27,7 +27,7 @@ class PlanningController extends Controller
      */
     public function create()
     {
-        return view('auth.sadmin.planning.create');
+        return view('auth.admin.planning.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class PlanningController extends Controller
             'description' => $request->description                        
         ]);
 
-        return view('auth.sadmin.planning.index');
+        return view('auth.admin.planning.index');
 
     }
      

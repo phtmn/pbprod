@@ -1,15 +1,15 @@
-@extends('layouts.SAdmin.app')
+@extends('layouts.Admin.app')
 @section('content')
     <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
         <div class="row pt-sm-2 pt-lg-0">
-        @include('layouts.SAdmin.sidebar')
+        @include('layouts.Admin.sidebar')
             <div class="col-lg-9 pt-4 pb-1 mt-2 pb-sm-4">
              
                 <section class="card border-2 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4 ">
                     <div class="card-body ">
                          
                         <div class="d-flex align-items-center"></div>
-                        <form action="{{ route('management.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('managements.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="mb-3 container">
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-12 d-flex justify-content-end pt-3">
                                     <a class="btn btn-secondary bg text-dark   " type="button"
-                                    href="{{ route('management.index') }}">
+                                    href="{{ route('managements.index') }}">
                                     <i class="ai-undo ms-n1"></i>
                                     
                                 </a>

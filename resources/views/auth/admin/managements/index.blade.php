@@ -1,8 +1,8 @@
-@extends('layouts.SAdmin.app')
+@extends('layouts.Admin.app')
 @section('content')
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
     <div class="row pt-sm-2 pt-lg-0">
-        @include('layouts.SAdmin.sidebar')
+        @include('layouts.Admin.sidebar')
         <div class="col-lg-9 pt-4 pb-1 mt-2 pb-sm-4">
 
             <div class="card border-2 py-1 p-md-2 p-xl-3 p-xxl-4">
@@ -10,7 +10,7 @@
                     <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
                         <div class="h4 mb-0">
                             <a class="btn btn-secondary bg text-dark me-3 me-sm-4" type="button"
-                                href="{{ route('management.create') }}">
+                                href="{{ route('managements.create') }}">
                                 <i class="ai-plus"></i>
                             </a>
                         </div>
@@ -23,31 +23,42 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th class="text-end"></th>
+                            <tr>
+                                    <th class="text-left"> </th>
+                                    <th class="text-end"> </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($managements as $d)
                                 <tr>
-                                    <td>{{ $d->title }}</td>
-                                    <td>{{ $d->name }}</td>
-                                    <td>{{ $d->description }}</td>
-                                    <td class="text-nowrap">
-                                        <a href="{{ route('management.edit', $d->id) }}" class="btn btn-sm btn-warning">Editar</a>
-
-                                        <form action="{{ route('management.destroy', $d->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
-                                        </form>
+                                    <td class="text-left">
+                                        <form action="{{ route('users.destroy', $d->id) }}"
+                                            method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <a href="{{ route('users.edit', $d->id) }}"
+                                            class=" bg-light text-dark fs-6 d-block text-wrap py-2 mb-2"
+                                            style="max-width: 100%; white-space: normal;">
+                                                {{ $d->description }}
+                                            </a>
+                                            <p><span class="badge bg-dark fs-sm">{{ $d->title }}</span></p>
                                     </td>
+
+                                    <td class="text-end">
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit"
+                                                class="btn btn-secondary  fs-8 me-sm-4 ">
+                                                <i class="ai-trash "> </i>
+                                            </button>
+                                            </form>
+                                        </div>
+                                    </td>
+
                                 </tr>
                                 @empty
-                                <tr>
-                                    <td colspan="5" class="text-center">Nenhum dado cadastrado.</td>
-                                </tr>
+                                <p class="text-warning">Nenhum Cadastro</p>
                                 @endforelse
+                                 
                             </tbody>
                         </table>
                     </div>

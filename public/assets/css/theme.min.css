@@ -3200,9 +3200,9 @@ textarea.form-control.is-invalid {
 }
 
 .btn:hover {
-    color: var(--ar-btn-hover-color);
-    background-color: var(--ar-btn-hover-bg);
-    border-color: var(--ar-btn-hover-border-color)
+    color: #121519;
+    background-color: #121519;
+    border-color: #121519
 }
 
 .btn-check+.btn:hover {
