@@ -1,13 +1,14 @@
-@extends('layouts.SAdmin.app')
+@extends('layouts.Admin.app')
 
 @section('content')
     <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
         <div class="row pt-sm-2 pt-lg-0">
             <!-- Sidebar (offcanvas on sreens < 992px)-->
-            @include('layouts.SAdmin.sidebar')
+            @include('layouts.Admin.sidebar')
             <!-- Page content-->
 
             <div class="col-lg-9 pt-4 pb-2 pb-sm-4">
+                
                 <form method="post" action="{{ route('users.store') }}" class="mt-6 space-y-6"
                     enctype="multipart/form-data">
                     @csrf
@@ -41,16 +42,19 @@
                                     <input class="form-control" type="email" id="email" name="email">
                                 </div>                                  
                                 <div class="col-sm-6">
-                                    <label class="form-label" for="email">Tipo de usuário</label>
+                                    <label class="form-label" for="email">Perfil</label>
                                     <select class="form-select select" name="usertype" id="usertype">
                                         <option value="userAI">userAI</option>
                                         <option value="SAdmin">SAdmin</option>
                                     </select>
                                 </div>    
                                 <div class="col-sm-6">
-                                    <label class="form-label" for="titulo">Bio</label>
-                                    <textarea class="form-control" name="bio" id="bio" cols="30" rows="10" style="height: 50px;"></textarea>
-                                </div>
+                                    <label class="form-label" for="email">Gerência</label>
+                                    <select class="form-select select" name="usertype" id="usertype">
+                                        <option value="userAI">aa</option>
+                                        <option value="SAdmin">bb</option>
+                                    </select>
+                                </div>  
                                 <div class="col-sm-6">
                                     <label class="form-label" for="password">Senha</label>
                                     <input class="form-control" type="password" id="password" name="password">

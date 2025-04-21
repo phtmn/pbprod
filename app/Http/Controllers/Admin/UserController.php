@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SAdmin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id')->get();
-        return view('auth.sadmin.users.index', compact('users'));
+        return view('auth.admin.users.index', compact('users'));
     }
 
     /**
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.sadmin.users.create');
+        return view('auth.admin.users.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('auth.sadmin.users.edit', compact('user'));
+        return view('auth.admin.users.edit', compact('user'));
     }
 
     /**

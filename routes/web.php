@@ -9,20 +9,20 @@ use App\Http\Controllers\UserAI\ProfileController;
 use App\Http\Controllers\UserAI\PromptsController;
 use App\Http\Controllers\UserAI\PromptSpaceController;
 use App\Http\Controllers\UserAI\TagController;
-// SAdmin
-use App\Http\Controllers\SAdmin\ProfileSAController;
-use App\Http\Controllers\SAdmin\ToolsController;
-use App\Http\Controllers\SAdmin\UserController;
-use App\Http\Controllers\UserAI\DeleteUserPrompt;
-use App\Http\Controllers\UserAI\FavoriteController; 
-use App\Http\Controllers\UserAI\UsersController;
+
+// Admin
+use App\Http\Controllers\Admin\ActionsController;
+use App\Http\Controllers\Admin\ManagementsController;
+use App\Http\Controllers\Admin\UserController; 
+use App\Http\Controllers\Admin\PlanningController;
+
+ 
+
 
 Route::get('/', function () {
     return redirect('login');
 });
-Route::get('/promptsHome', function () {
-    return view('site.promptsHome');
-});
+ 
 
 // userAI - user
 Route::group(['middleware' => 'userAI'], function () {
@@ -37,14 +37,17 @@ Route::group(['middleware' => 'userAI'], function () {
     Route::resource('favorites', FavoriteController::class);
     Route::resource('users', UsersController::class);    
     Route::delete('/user-delete/{id}', 'FavoriteController@destroy')->name('user.delete');
-    Route::get('tool/show/{id}', [ToolsController::class, 'show'])->name('tools.show');
+    
 });
-// SAdmin
+
+// Admin
 Route::group(['middleware' => 'superadmin'], function () {   
+    Route::resource('managements', ManagementsController::class);
+    Route::resource('actions', ActionsController::class);
+    Route::resource('planning', PlanningController::class);
     Route::resource('tools', ToolsController::class);
     Route::resource('users', UserController::class);
-    Route::get('/profileSA', [ProfileSAController::class, 'edit'])->name('profileSA.edit');
-    Route::patch('/profileSA', [ProfileSAController::class, 'update'])->name('profileSA.update');
+
 });
 
 require __DIR__ . '/auth.php';

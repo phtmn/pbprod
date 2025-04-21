@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('engineer_favorites', function (Blueprint $table) {
+        Schema::create('actions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('engineer_id')->foreign('engineer_id')->references('id')->on('users')->onDelete('cascade')->nullable();
-            $table->unsignedBigInteger('user_id')->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->nullable();
+            $table->string('number')->nullable();;  
+            $table->string('title')->nullable();;                                 
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('engineer_favorites');
+        Schema::dropIfExists('actions');
     }
 };
