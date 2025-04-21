@@ -4,7 +4,7 @@
         <!-- Navbar brand (Logo) -->
         <a class="navbar-brand pe-sm-0" href="{{ route('home.index')}}">
             <span class="text-primary flex-shrink-0 ">
-                <img class="d-block  mb-2 rounded-circle" src="{{ asset('assets/img/roree-removebg-preview.png') }}" width="75"> </span> ROREE</a>
+            <img class="d-block  mb-2 " src="{{ asset('assets/img/SEAFDS.png') }}" width="325"></span> </a>
         </span>
 
         </a>
@@ -22,6 +22,15 @@
 
             </a>
             <div class="dropdown-menu dropdown-menu-end my-1">
+
+            <a class="dropdown-item {{ (\Request::route()->getName() == 'profile.edit') ? 'nav-link active' : 'nav-link' }}" href="{{ route('profile.edit')}}"> <i class="ai-user fs-lg opacity-70 me-2"></i>{{ __('Perfil') }}
+            </a>
+
+            <a class="dropdown-item {{ (\Request::route()->getName() == 'profile.edit') ? 'nav-link active' : 'nav-link' }}" href="{{ route('profile.edit')}}"> <i class="ai-user fs-lg opacity-70 me-2"></i>{{ __('Perfil') }}
+            </a>
+
+            <a class="dropdown-item {{ (\Request::route()->getName() == 'profile.edit') ? 'nav-link active' : 'nav-link' }}" href="{{ route('profile.edit')}}"> <i class="ai-user fs-lg opacity-70 me-2"></i>{{ __('Perfil') }}
+            </a>
 
                 <a class="dropdown-item {{ (\Request::route()->getName() == 'profile.edit') ? 'nav-link active' : 'nav-link' }}" href="{{ route('profile.edit')}}"> <i class="ai-user fs-lg opacity-70 me-2"></i>{{ __('Perfil') }}
                 </a>
@@ -51,21 +60,32 @@
         <!-- Navbar collapse (Main navigation) -->
         <nav class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
+ 
+                <li class="nav-item">
+                    <a href="{{ route('activities.index')}}" class="{{ (\Request::route()->getName() == 'activities.index') ? 'nav-link active' : 'nav-link' }}
+                  {{ (\Request::route()->getName() == 'activities.create') ? 'nav-link active' : 'nav-link' }}
+                  {{ (\Request::route()->getName() == 'activities.edit') ? 'nav-link active' : 'nav-link' }}">{{ __('Atividades') }}</a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{{ route('search.index')}}" class="{{ (\Request::route()->getName() == 'search.index') ? 'nav-link active' : 'nav-link' }} ">{{ __('Diárias') }}</a>
+                </li>
+
+{{-- 
                 <li class="nav-item  ">
                     <a href="{{ route('search.index')}}" class="{{ (\Request::route()->getName() == 'search.index') ? 'nav-link active' : 'nav-link' }} ">{{ __('Pesquisar') }}</a>
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('prompts.index')}}" class="{{ (\Request::route()->getName() == 'prompts.index') ? 'nav-link active' : 'nav-link' }}
-                  {{ (\Request::route()->getName() == 'prompts.create') ? 'nav-link active' : 'nav-link' }}
-                  {{ (\Request::route()->getName() == 'prompts.edit') ? 'nav-link active' : 'nav-link' }}">{{ __('Prompts') }}</a>
+                    <a href="{{ route('activities.index')}}" class="{{ (\Request::route()->getName() == 'activities.index') ? 'nav-link active' : 'nav-link' }}
+                  {{ (\Request::route()->getName() == 'activities.create') ? 'nav-link active' : 'nav-link' }}
+                  {{ (\Request::route()->getName() == 'activities.edit') ? 'nav-link active' : 'nav-link' }}">{{ __('Prompts') }}</a>
                 </li>
                 <li class="nav-item"><a href="{{ route('tags.index')}}" class="{{ (\Request::route()->getName() == 'tags.index') ? 'nav-link active' : 'nav-link' }}
                   {{ (\Request::route()->getName() == 'tags.create') ? 'nav-link active' : 'nav-link' }}
                   {{ (\Request::route()->getName() == 'tags.edit') ? 'nav-link active' : 'nav-link' }}">{{ __('Tags') }}</a>
                 </li>
                 <li class="nav-item"><a href="{{ route('favorites.index')}}" class="{{ (\Request::route()->getName() == 'favorites.index') ? 'nav-link active' : 'nav-link' }}">{{ __('Favoritos') }}</a>
-                </li>
+                </li> --}}
                 {{--   <li class="nav-item"><a href="{{ route('prompt-spaces.index')}}" class="{{ (\Request::route()->getName() == 'prompt-spaces.index') ? 'nav-link active' : 'nav-link' }}
                   {{ (\Request::route()->getName() == 'prompt-spaces.create') ? 'nav-link active' : 'nav-link' }}
                   {{ (\Request::route()->getName() == 'prompt-spaces.edit') ? 'nav-link active' : 'nav-link' }}">{{ __('Prompt Spaces') }}</a>

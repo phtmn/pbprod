@@ -62,9 +62,7 @@
                 </section>
             </form>
         </div>
-
-        {{-- component sidebar --}}
-        <x-sidebar />
+ 
     </div>
 </div>
 

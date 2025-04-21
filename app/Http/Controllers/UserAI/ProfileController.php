@@ -17,12 +17,9 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $user = Auth::User();
-        $sidebar = PromptSpace::all()->where('user_id', $user->id);
-        $tags = Tag::all()->where('user_id', $user->id);
+         
         return view('auth.userAI.profile.edit', [
             'user' => $request->user(),
-            'sidebar' => $sidebar,
-            'tags' => $tags,
         ]);
     }
 

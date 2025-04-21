@@ -28,7 +28,8 @@ class User extends Authenticatable
         'email',
         'profile',
         'management',
-        'password',        
+        'password', 
+        'usertype',     
         'created_at'
         
     ];

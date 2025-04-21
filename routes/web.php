@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 // userAI - user
+use App\Http\Controllers\UserAI\ActivitiesController;
+use App\Http\Controllers\UserAI\ProfileController;
+
 use App\Http\Controllers\UserAI\SearchController;
 use App\Http\Controllers\UserAI\HomeController;
-use App\Http\Controllers\UserAI\ProfileController;
+
 use App\Http\Controllers\UserAI\PromptsController;
 use App\Http\Controllers\UserAI\PromptSpaceController;
 use App\Http\Controllers\UserAI\TagController;
@@ -26,6 +29,9 @@ Route::get('/', function () {
 
 // userAI - user
 Route::group(['middleware' => 'userAI'], function () {
+
+    Route::resource('activities', ActivitiesController::class);    
+
     Route::get('home', [HomeController::class, 'index'])->name('home.index');
     Route::get('show/{id}', [HomeController::class, 'show'])->name('show.index');
     Route::resource('search', SearchController::class);
@@ -44,8 +50,7 @@ Route::group(['middleware' => 'userAI'], function () {
 Route::group(['middleware' => 'superadmin'], function () {   
     Route::resource('managements', ManagementsController::class);
     Route::resource('actions', ActionsController::class);
-    Route::resource('planning', PlanningController::class);
-    Route::resource('tools', ToolsController::class);
+    Route::resource('planning', PlanningController::class);    
     Route::resource('users', UserController::class);
 
 });
