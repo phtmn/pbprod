@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\UserAI\Prompt;
+use App\Models\Admin\Management;
 
 
 class User extends Authenticatable
@@ -25,13 +25,12 @@ class User extends Authenticatable
         'name',
         'whatsapp',
         'registration',
-        'email',
-        'profile',
-        'management',
-        'password', 
-        'usertype',     
+        'email',        
+        'management_id',
+        'password',
+       //{{--  'usertype' => 'user', --}}
         'created_at'
-        
+
     ];
 
     /**
@@ -54,10 +53,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function prompts()
-    {
-        return $this->hasMany(Prompt::class);
-    }
 
-  
+    public function management()
+    {
+        return $this->belongsTo(Management::class, 'management');
+    }
 }

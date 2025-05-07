@@ -6,6 +6,10 @@
        <button class="btn-close position-absolute top-0 end-0 mt-3 me-3 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount"></button>
        <div class="offcanvas-body">
          <nav class="nav flex-column pb-2 pb-lg-4 mb-3">
+         <a class="{{ (\Request::route()->getName() == 'dashboard.index') ? 'nav-link fw-semibold py-2 px-0 active' : 'nav-link fw-semibold py-2 px-0' }}" href="{{ route('dashboard.index') }}">
+             <i class="ai-dashboard fs-5 opacity-60 me-2"></i>{{ __('Dashboard') }}
+           </a>
+         <hr>
          <a class="{{ (\Request::route()->getName() == 'actions.index') ? 'nav-link fw-semibold py-2 px-0 active' : 'nav-link fw-semibold py-2 px-0' }}
                   {{ (\Request::route()->getName() == 'actions.create') ? 'nav-link fw-semibold py-2 px-0 active' : 'nav-link fw-semibold py-2 px-0' }}
                   {{ (\Request::route()->getName() == 'actions.edit') ? 'nav-link fw-semibold py-2 px-0 active' : 'nav-link fw-semibold py-2 px-0' }}" href="{{ route('actions.index') }}">

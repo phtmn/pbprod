@@ -54,7 +54,7 @@
                  <p class="w-100 fs-sm pt-5 mt-auto mb-5" style="max-width: 526px;">
              </div>
              <!-- Cover image-->
-             <div class="w-50 bg-size-cover bg-repeat-0 bg-position-center" style="background-image: url(assets/img/login.png);"></div>
+             <div class="w-50 bg-size-cover bg-repeat-0 bg-position-center" style="background-image: url(assets/img/sec.png);"></div>
          </div>
      </main>
      <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll>

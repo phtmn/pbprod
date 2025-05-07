@@ -30,23 +30,26 @@
                             </div>
                             <div class="col-sm-2">
                                 <label class="form-label" for="email">Perfil</label>
-                                <select class="form-select select" name="profile" id="profile">
-                                    <option value="userAI">userAI</option>
+                                {{--  <select class="form-select select" name="usertype" id="usertype">
+                                <option value="">-</option>
+                                    {{--<option value="userAI">userAI</option> --}}
                                     <option value="Admin">Administrador</option>
                                     <option value="Colaborador">Colaborador</option>
                                     {{-- <option value="Admin">Gerente</option> --}}
-                                </select>
+                                </select> --}}
                             </div>
                             <div class="col-sm-3">
                                 <label class="form-label" for="email">Gerência</label>
                                 <select class="form-select select" name="management" id="management">
-                                    <option value="userAI">aa</option>
-                                    <option value="SAdmin">bb</option>
-                                    <option value="SAdmin">bb</option>
+                                    <option value="">-</option>
+                                    @foreach ($managements as $management)
+                                    <option value="{{ $management->id }}">{{ $management->name }}</option>
+                                    @endforeach
                                 </select>
+
                             </div>
                             <div class="col-sm-3">
-                                <label class="form-label" for="password">Senha <span class="text-danger">*</span></label>                                
+                                <label class="form-label" for="password">Senha <span class="text-danger">*</span></label>
                                 <input class="form-control" type="password" id="password" name="password" requerid>
                             </div>
                         </div>

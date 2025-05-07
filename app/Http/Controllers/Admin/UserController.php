@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Admin\Management;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.admin.users.create');
+        $managements = Management::all();
+        return view('auth.admin.users.create', compact('managements'));
     }
 
     /**
@@ -32,15 +34,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         User::create([
             'name' => $request->name,
             'whatsapp' => $request->whatsapp,
             'registration' => $request->registration,
             'email' => $request->email,
-            'profile' => $request->profile,
-            'management' => $request->management,            
-            'password' => Hash::make($request->password),            
+          //  'usertype' => $request->usertype,           
+            'management_id' => $request->management,
+            'password' => Hash::make($request->password),
         ]);
 
         return redirect()->route('users.index');
@@ -61,7 +63,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
 
         $user = User::findOrFail($id);
 

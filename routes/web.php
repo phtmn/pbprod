@@ -14,13 +14,11 @@ use App\Http\Controllers\UserAI\PromptSpaceController;
 use App\Http\Controllers\UserAI\TagController;
 
 // Admin
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ActionsController;
 use App\Http\Controllers\Admin\ManagementsController;
 use App\Http\Controllers\Admin\UserController; 
 use App\Http\Controllers\Admin\PlanningController;
-
- 
-
 
 Route::get('/', function () {
     return redirect('login');
@@ -48,10 +46,12 @@ Route::group(['middleware' => 'userAI'], function () {
 
 // Admin
 Route::group(['middleware' => 'superadmin'], function () {   
-    Route::resource('managements', ManagementsController::class);
+    Route::resource('dashboard', DashboardController::class);   
     Route::resource('actions', ActionsController::class);
-    Route::resource('planning', PlanningController::class);    
+    Route::resource('managements', ManagementsController::class);
     Route::resource('users', UserController::class);
+    Route::resource('planning', PlanningController::class);    
+   
 
 });
 

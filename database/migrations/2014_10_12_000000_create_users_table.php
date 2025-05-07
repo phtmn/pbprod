@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('image')->nullable();
             $table->string('usertype');
-            $table->string('whatsapp')->nullable();            
+            $table->string('whatsapp')->nullable();   
+            $table->string('registration')->nullable();      
+            $table->string('profile')->nullable();      
             $table->string('bio')->nullable();           
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
