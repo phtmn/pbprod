@@ -111,7 +111,7 @@
 
 
                 <div class="col-12 d-flex justify-content-end pt-3">
-                    <a href="{{ route('planning.index') }}" class="btn btn-secondary" aria-label="Voltar">
+                    <a href="{{ route('activities.index') }}" class="btn btn-secondary" aria-label="Voltar">
                         <i class="ai-undo " aria-hidden="true"></i>
                     </a>
                     <button type="submit" class="btn btn-primary ms-2" aria-label="Salvar">
