@@ -28,7 +28,7 @@ class User extends Authenticatable
         'email',        
         'management_id',
         'password',
-       //{{--  'usertype' => 'user', --}}
+        'usertype' => 'user', 
         'created_at'
 
     ];

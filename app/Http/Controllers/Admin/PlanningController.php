@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Planning;
+use App\Models\Admin\Action;
+use App\Models\Admin\Management;
+use App\Models\User;
+use App\Models\User as ModelsUser;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,20 +19,22 @@ class PlanningController extends Controller
      */
     public function index()
     {
-        
-
         return view('auth.admin.planning.index', [
-            'user' => Auth::User()
-            //'planning' => Planning::all()
+            'plannings' => Planning::with(['user', 'management', 'action'])->get()
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('auth.admin.planning.create');
+        $actions = Action::all();
+        $users = User::all();
+        $managements = Management::all();
+        return view('auth.admin.planning.create', compact('actions', 'users', 'managements'));
+
     }
 
     /**
@@ -36,11 +43,18 @@ class PlanningController extends Controller
     public function store(Request $request)
     {
         Planning::create([
-            'title' => $request->title,
-            'name' => $request->name,
-            'description' => $request->description                        
+            'year' => $request->year,
+            'management_id' => $request->management_id,
+            'user_id' => $request->user_id,
+            'action_id' => $request->action_id,
+            'budget' => $request->budget,
+            'initiative' => $request->initiative,
+            'goal' => $request->goal,
+            'steps' => $request->steps,
+            'indicator_quantitative' => $request->indicator_quantitative,
+            'indicator_qualitative' => $request->indicator_qualitative,
         ]);
-
+        
         return view('auth.admin.planning.index');
 
     }

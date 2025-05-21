@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('image')->nullable();
-            $table->string('usertype');
+            $table->string('usertype')->default('SAdmin');
             $table->string('whatsapp')->nullable();   
             $table->string('registration')->nullable();      
             $table->string('profile')->nullable();      
