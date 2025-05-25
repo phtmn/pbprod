@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
                         <div class="h4 mb-0">
-                            <a class="btn btn-secondary bg text-dark me-3 me-sm-4" type="button"
+                            <a class=" btn-secondary  text-dark  me-3 me-sm-4" type="button"
                                 href="{{ route('managements.create') }}">
                                 <i class="ai-plus"></i>
                             </a>
@@ -36,18 +36,17 @@
                                             method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="{{ route('managements.edit', $d->id) }}"
-                                            class=" bg-light text-dark fs-6 d-block text-wrap py-2 mb-2"
+                                            <a class=" bg-light text-dark fs-6 d-block text-wrap py-2 mb-2"
                                             style="max-width: 100%; white-space: normal;">
                                                 {{ $d->name }}
                                             </a>
-                                            <p><span class="badge bg-dark fs-sm">{{ $d->acronym }}</span></p>
+                                            <p><span class="badge bg-Secondary fs-sm">{{ $d->acronym }}</span></p>
                                     </td>
 
                                     <td class="text-end">
                                         <div class="d-flex justify-content-end">
                                             <button type="submit"
-                                                class="btn btn-secondary  fs-8 me-sm-4 ">
+                                                class="btn btn-white text-danger  fs-8 me-sm-4 ">
                                                 <i class="ai-trash "> </i>
                                             </button>
                                             </form>

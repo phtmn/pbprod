@@ -34,13 +34,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'whatsapp' => 'nullable|string|max:20',
+            'registration' => 'nullable|string|max:50',
+            'usertype' => 'required|in:SAdmin,Colaborador,Gerente',
+            'management' => 'nullable|exists:managements,id',
+            'password' => 'required|string|min:8',
+        ]);
 
         User::create([
             'name' => $request->name,
             'whatsapp' => $request->whatsapp,
             'registration' => $request->registration,
             'email' => $request->email,
-          //  'usertype' => $request->usertype,           
+            'usertype' => $request->usertype,
             'management_id' => $request->management,
             'password' => Hash::make($request->password),
         ]);

@@ -56,6 +56,8 @@ class User extends Authenticatable
 
     public function management()
     {
-        return $this->belongsTo(Management::class, 'management');
+       return $this->belongsTo(Management::class, 'management_id');
     }
+
+    
 }

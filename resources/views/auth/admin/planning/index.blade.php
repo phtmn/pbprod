@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
                         <div class="h4 mb-0">
-                            <a class="btn btn-secondary bg text-dark me-3 me-sm-4" type="button"
+                            <a class=" btn-secondary  text-dark me-3 me-sm-4" type="button"
                                 href="{{ route('planning.create') }}">
                                 <i class="ai-plus"></i>
                             </a>
@@ -24,7 +24,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="text-left"> </th>
+                                    <th class="text-left">  </th>
+                                   
                                     <th class="text-end"> </th>
                                 </tr>
                             </thead>
@@ -38,21 +39,18 @@
                                             style="max-width: 100%; white-space: normal;">
                                             {{ $planning->action->title ?? '-' }}
                                         </a>
+                                         <p>
+                                                <span class="badge bg-Secondary fs-sm">{{ $planning->user->name ?? '-' }}</span>  
+                                                <span class="badge bg-Secondary fs-sm">{{ $planning->management->acronym ?? '-' }}</span>  
+                                                <span class="badge bg-Secondary fs-sm"> ... MODAL</span>  
+                                         </p>       
                                     </td>
-
-                                    <!-- Nome do responsável -->
-                                    <td>{{ $planning->user->name ?? '-' }}</td>
-
-                                    <!-- Nome da gerência -->
-                                    <td>{{ $planning->management->acronym ?? '-' }}</td>
-
-                                    <!-- Iniciativa -->
-                                    <td>{{ $planning->initiative ?? '-' }}</td>
+ 
 
                                     <td class="text-end">
                                         <div class="d-flex justify-content-end">
                                             <button type="submit"
-                                                class="btn btn-secondary  fs-8 me-sm-4 ">
+                                                class="btn btn-white text-danger fs-8 me-sm-4 ">
                                                 <i class="ai-trash "> </i>
                                             </button>
                                             </form>

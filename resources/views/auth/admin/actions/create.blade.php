@@ -25,10 +25,10 @@
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-end pt-3">
-                            <a href="{{ route('actions.index') }}" class="btn btn-secondary" aria-label="Voltar">
+                            <a href="{{ route('actions.index') }}" class="btn text-dark " aria-label="Voltar">
                                 <i class="ai-undo " aria-hidden="true"></i>
                             </a>
-                            <button type="submit" class="btn btn-primary ms-2" aria-label="Salvar">
+                            <button type="submit" class="btn text-dark ms-2" aria-label="Salvar">
                                 <i class="ai-check  " aria-hidden="true"></i>
                             </button>
                         </div>

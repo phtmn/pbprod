@@ -16990,7 +16990,7 @@ hr.dropdown-divider {
 }
 
 .nav {
-    --ar-nav-link-active-color: var(--ar-primary)
+    --ar-nav-link-active-color: var(--ar-dark)
 }
 
 .nav-item {

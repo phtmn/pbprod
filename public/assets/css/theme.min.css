@@ -3200,9 +3200,9 @@ textarea.form-control.is-invalid {
 }
 
 .btn:hover {
-    color: #121519;
-    background-color: #121519;
-    border-color: #121519
+    color: var(--ar-secondary);
+    background-color: var(--ar-secondary);    
+    border-color:var(--ar-secondary)
 }
 
 .btn-check+.btn:hover {
@@ -16990,7 +16990,7 @@ hr.dropdown-divider {
 }
 
 .nav {
-    --ar-nav-link-active-color: var(--ar-primary)
+    --ar-nav-link-active-color: var(--ar-dark)
 }
 
 .nav-item {

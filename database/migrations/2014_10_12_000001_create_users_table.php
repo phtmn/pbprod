@@ -14,13 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('image')->nullable();
+            $table->string('email')->unique();           
             $table->string('usertype')->default('SAdmin');
             $table->string('whatsapp')->nullable();   
-            $table->string('registration')->nullable();      
-            $table->string('profile')->nullable();      
-            $table->string('bio')->nullable();           
+            $table->string('registration')->nullable();   
+             $table->unsignedBigInteger('management_id')->nullable();               
+            $table->foreign('management_id')->references('id')->on('managements')->onDelete('set null');    
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

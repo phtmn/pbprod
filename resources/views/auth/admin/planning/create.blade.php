@@ -19,7 +19,7 @@
                                 <select class="form-select select" name="management_id" id="management_id">
                                 <option value="">-</option>
                                 @foreach ($managements as $management)
-                                    <option value="{{ $management->id }}">{{ $management->name }}</option>
+                                    <option value="{{ $management->id }}">{{ $management->acronym }}</option>
                                 @endforeach
                                 </select>
                             </div>
@@ -82,17 +82,18 @@
                                 <textarea class="form-control" name="indicator_qualitative" id="indicator_qualitative" cols="30" rows="20" style="height: 80px;"> </textarea>
                             </div>
                             </div>
-                                                   
-                        </div>
-                        <div class="col-12 d-flex justify-content-end pt-3">
-                            <a href="{{ route('planning.index') }}" class="btn btn-secondary" aria-label="Voltar">
+
+                              <div class="col-12 d-flex justify-content-end pt-3">
+                            <a href="{{ route('planning.index') }}" class="btn text-dark aria-label="Voltar">
                                 <i class="ai-undo " aria-hidden="true"></i>
                             </a>
-                            <button type="submit" class="btn btn-primary ms-2" aria-label="Salvar">
+                            <button type="submit" class="btn text-dark ms-2" aria-label="Salvar">
                                 <i class="ai-check  " aria-hidden="true"></i>
                             </button>
                         </div>
-
+                                                   
+                        </div>
+                       
 
                         </div>
                     </form>

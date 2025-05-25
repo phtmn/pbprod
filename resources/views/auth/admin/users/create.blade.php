@@ -30,34 +30,34 @@
                             </div>
                             <div class="col-sm-2">
                                 <label class="form-label" for="email">Perfil</label>
-                                {{--  <select class="form-select select" name="usertype" id="usertype">
-                                <option value="">-</option>
+                                <select class="form-select select" name="usertype" id="usertype">
+                                    <option value="">-</option>
                                     {{--<option value="userAI">userAI</option> --}}
-                                    <option value="Admin">Administrador</option>
+                                    <option value="SAdmin">Administrador</option>
                                     <option value="Colaborador">Colaborador</option>
-                                    {{-- <option value="Admin">Gerente</option> --}}
-                                </select> --}}
+                                    <option value="Gerente">Gerente</option> 
+                                </select> 
                             </div>
                             <div class="col-sm-3">
                                 <label class="form-label" for="email">Gerência</label>
                                 <select class="form-select select" name="management" id="management">
                                     <option value="">-</option>
                                     @foreach ($managements as $management)
-                                    <option value="{{ $management->id }}">{{ $management->name }}</option>
+                                    <option value="{{ $management->id }}">{{ $management->acronym }}</option>
                                     @endforeach
                                 </select>
 
                             </div>
                             <div class="col-sm-3">
                                 <label class="form-label" for="password">Senha <span class="text-danger">*</span></label>
-                                <input class="form-control" type="password" id="password" name="password" requerid>
+                                <input class="form-control" type="password" id="password" name="password" value="SEADF@123" required>
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-end pt-3">
-                            <a href="{{ route('users.index') }}" class="btn btn-secondary" aria-label="Voltar">
+                            <a href="{{ route('users.index') }}" class="btn text-dark " aria-label="Voltar">
                                 <i class="ai-undo " aria-hidden="true"></i>
                             </a>
-                            <button type="submit" class="btn btn-primary ms-2" aria-label="Salvar">
+                            <button type="submit" class="btn text-dark ms-2" aria-label="Salvar">
                                 <i class="ai-check  " aria-hidden="true"></i>
                             </button>
                         </div>
