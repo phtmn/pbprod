@@ -62,9 +62,28 @@
             <ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
  
                 <li class="nav-item">
-                    <a href="{{ route('activities.index')}}" class="{{ (\Request::route()->getName() == 'activities.index') ? 'nav-link active' : 'nav-link' }}
-                  {{ (\Request::route()->getName() == 'activities.create') ? 'nav-link active' : 'nav-link' }}
-                  {{ (\Request::route()->getName() == 'activities.edit') ? 'nav-link active' : 'nav-link' }}">{{ __('Atividades') }}</a>
+                   <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Menu</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown">
+              <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Atividade</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Cadastrar Atividade</a></li>
+                <li><a href="#" class="dropdown-item">Atividades</a></li>                
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Diárias</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Solicitar Diária</a></li>
+                <li><a href="#" class="dropdown-item">Diárias</a></li>                
+              </ul>
+            </li>
+            <li><a href="#" class="dropdown-item">Another action</a></li>
+            <li class="dropdown-divider"> </li>
+            <li href="#"><a class="dropdown-item">Something else here</a></li>
+          </ul>
+        </li> 
                 </li>
                 <li class="nav-item  ">
                     <a href="{{ route('search.index')}}" class="{{ (\Request::route()->getName() == 'search.index') ? 'nav-link active' : 'nav-link' }} ">{{ __('Diárias') }}</a>

@@ -41,15 +41,18 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <a href="{{ route('users.edit', $d->id) }}"
-                                            class=" bg-light text-dark fs-6 d-block text-wrap py-2 mb-2"
-                                            style="max-width: 100%; white-space: normal;">
+                                                class=" bg-light text-dark fs-6 d-block text-wrap py-2 mb-2"
+                                                style="max-width: 100%; white-space: normal;">
                                                 {{ $d->name }}
                                             </a>
                                             <p>
-                                                <span class="badge bg-Secondary fs-sm">{{ $d->email }}</span>                                          
+                                                <span class="badge bg-Secondary fs-sm">{{ $d->email }}</span>
                                                 <span class="badge bg-Secondary fs-sm">{{ $d->usertype }}</span>
-                                                <span class="badge bg-Secondary fs-sm">{{ $d->management_id }}</span>
-                                        </p>                                            
+                                                <span class="badge bg-secondary fs-sm">
+                                                    {{ $d->management->acronym ?? '*' }}
+                                                </span>
+
+                                            </p>
                                     </td>
 
                                     <td class="text-end">

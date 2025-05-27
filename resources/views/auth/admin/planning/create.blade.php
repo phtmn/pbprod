@@ -83,17 +83,15 @@
                             </div>
                             </div>
 
-                              <div class="col-12 d-flex justify-content-end pt-3">
-                            <a href="{{ route('planning.index') }}" class="btn text-dark aria-label="Voltar">
+                            <div class="col-12 d-flex justify-content-end pt-3">
+                            <a href="{{ route('planning.index') }}" class="btn text-dark aria-label">
                                 <i class="ai-undo " aria-hidden="true"></i>
                             </a>
                             <button type="submit" class="btn text-dark ms-2" aria-label="Salvar">
                                 <i class="ai-check  " aria-hidden="true"></i>
                             </button>
-                        </div>
-                                                   
-                        </div>
-                       
+                        </div>                                                   
+                        </div>                       
 
                         </div>
                     </form>

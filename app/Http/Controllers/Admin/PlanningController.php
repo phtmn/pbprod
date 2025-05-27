@@ -23,7 +23,7 @@ class PlanningController extends Controller
             'plannings' => Planning::with(['user', 'management', 'action'])->get()
         ]);
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +34,6 @@ class PlanningController extends Controller
         $users = User::all();
         $managements = Management::all();
         return view('auth.admin.planning.create', compact('actions', 'users', 'managements'));
-
     }
 
     /**
@@ -42,53 +41,51 @@ class PlanningController extends Controller
      */
     public function store(Request $request)
     {
-        Planning::create([
-            'year' => $request->year,
-            'management_id' => $request->management_id,
-            'user_id' => $request->user_id,
-            'action_id' => $request->action_id,
-            'budget' => $request->budget,
-            'initiative' => $request->initiative,
-            'goal' => $request->goal,
-            'steps' => $request->steps,
-            'indicator_quantitative' => $request->indicator_quantitative,
-            'indicator_qualitative' => $request->indicator_qualitative,
-        ]);
-        
-        return view('auth.admin.planning.index');
+        Planning::create($request->only([
+        'year', 'management_id', 'user_id', 'action_id',
+        'budget', 'initiative', 'goal', 'steps',
+        'indicator_quantitative', 'indicator_qualitative',
+    ]));
 
+        return view('auth.admin.planning.index');
     }
-     
+
     public function edit(string $id)
     {
-        $managements = Planning::findOrFail($id);
-        return view('managements.edit', compact('managements'));
+        $planning = Planning::findOrFail($id);
+
+        // Aqui você pode passar também os dados relacionados, se necessário (para dropdowns, etc)
+        $managements = Management::all();
+        $users = User::all();
+        $actions = Action::all();
+
+        return view('auth.admin.planning.edit', compact('planning', 'managements', 'users', 'actions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'year' => 'required|integer',
+            'management_id' => 'required|exists:managements,id',
+            'user_id' => 'required|exists:users,id',
+            'action_id' => 'required|exists:actions,id',
+            'budget' => 'nullable|string',
+            'initiative' => 'nullable|string',
+            'goal' => 'nullable|string',
+            'steps' => 'nullable|string',
+            'indicator_quantitative' => 'nullable|string',
+            'indicator_qualitative' => 'nullable|string',
         ]);
 
-        $managements = Planning::findOrFail($id);
-        $managements->update($validated);
+        $planning = Planning::findOrFail($id);
+        $planning->update($validated);
 
-        return redirect()->route('superadmin.management.index')->with('success', 'Atualizado com sucesso.');
+        return redirect()->route('planning.index')->with('success', 'Planejamento atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-       
-        Planning::find($id)->delete();
-        return redirect()->route('managements.index');
-        
+        Planning::findOrFail($id)->delete();
+        return redirect()->route('planning.index')->with('success', 'Planejamento excluído com sucesso!');
     }
 }

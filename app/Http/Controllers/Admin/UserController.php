@@ -63,8 +63,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-
-        return view('auth.admin.users.edit', compact('user'));
+        $managements = Management::all();
+        return view('auth.admin.users.edit', compact('user', 'managements'));
     }
 
     /**
@@ -72,20 +72,33 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-
         $user = User::findOrFail($id);
 
-        $user::where('id', $id)
-            ->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'usertype' => $request->usertype,
-                'whatsapp' => $request->whatsapp,
-                'created_at' => \Carbon\Carbon::createFromFormat('d/m/Y', $request->created_at)->format('Y-m-d H:i:s'),
-                'bio' => $request->bio
-                //'password' => Hash::make($request->password),             
-            ]);
+        // Validação (opcional mas recomendado)
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'usertype' => 'required|in:SAdmin,Colaborador,Gerente',
+            'whatsapp' => 'nullable|string|max:20',            
+            'created_at' => 'nullable|date_format:d/m/Y'
+        ]);
+
+        // Atualização direta no objeto
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->usertype = $request->usertype;        
+        $user->whatsapp = $request->whatsapp;      
+
+        if ($request->filled('created_at')) {
+            $user->created_at = \Carbon\Carbon::createFromFormat('d/m/Y', $request->created_at)->format('Y-m-d H:i:s');
+        }
+
+        // Se desejar alterar a senha no futuro:
+        // if ($request->filled('password')) {
+        //     $user->password = Hash::make($request->password);
+        // }
+
+        $user->save();
 
         return redirect()->route('users.index');
     }

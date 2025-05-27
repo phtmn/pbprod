@@ -24,8 +24,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="text-left">  </th>
-                                   
+                                    <th class="text-left"> </th>
+
                                     <th class="text-end"> </th>
                                 </tr>
                             </thead>
@@ -39,18 +39,33 @@
                                             style="max-width: 100%; white-space: normal;">
                                             {{ $planning->action->title ?? '-' }}
                                         </a>
-                                         <p>
-                                                <span class="badge bg-Secondary fs-sm">{{ $planning->user->name ?? '-' }}</span>  
-                                                <span class="badge bg-Secondary fs-sm">{{ $planning->management->acronym ?? '-' }}</span>  
-                                                <span class="badge bg-Secondary fs-sm"> ... MODAL</span>  
-                                         </p>       
-                                    </td>
- 
+                                         
 
+                                        <a class="btn btn-secondary mb-3 text-dark" data-bs-toggle="collapse"
+                                            href="#collapse-{{ $planning->id }}" role="button" aria-expanded="false"
+                                            aria-controls="collapse-{{ $planning->id }}">
+                                            ...
+                                        </a>
+
+                                        <div class="collapse" id="collapse-{{ $planning->id }}">
+                                            <div class="card card-body">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li><strong>Gerência:</strong>  <span class="badge bg-Secondary fs-sm">{{ $planning->management->acronym ?? '-' }}</span></li>
+                                                    <li><strong>Responsável:</strong> <span class="badge bg-Secondary fs-sm">{{ $planning->user->name ?? '-' }}</span></li>                                                    
+                                                    <li><strong>Orçamento:</strong> {{ $planning->budget ?? '-' }}</li>
+                                                    <li><strong>Iniciativa:</strong> {{ $planning->initiative ?? '-' }}</li>
+                                                    <li><strong>Meta:</strong> {{ $planning->goal ?? '-' }}</li>
+                                                    <li><strong>Etapas:</strong> {{ $planning->steps ?? '-' }}</li>
+                                                    <li><strong>Indicador Quantitativo:</strong> {{ $planning->indicator_quantitative ?? '-' }}</li>
+                                                    <li><strong>Indicador Qualitativo:</strong> {{ $planning->indicator_qualitative ?? '-' }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td class="text-end">
                                         <div class="d-flex justify-content-end">
                                             <button type="submit"
-                                                class="btn btn-white text-danger fs-8 me-sm-4 ">
+                                                class="btn btn-white text-danger  fs-8 me-sm-4 ">
                                                 <i class="ai-trash "> </i>
                                             </button>
                                             </form>
