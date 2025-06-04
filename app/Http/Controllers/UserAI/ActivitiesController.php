@@ -5,7 +5,7 @@ namespace App\Http\Controllers\UserAI;
 use App\Http\Controllers\Controller;
 use App\Models\UserAI\PromptSpace;
 use App\Models\UserAI\Activity;
-use App\Models\UserAI\Prompt;
+use App\Models\Admin\Action;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,12 +28,11 @@ class ActivitiesController extends Controller
      */
     public function create()
     {
-        $user = Auth::User();
-      //  $promptSpace = PromptSpace::all()->where('user_id', $user->id);
-       // $sidebar = PromptSpace::all()->where('user_id', $user->id);
-       // $tags = Tag::all()->where('user_id', $user->id);
-      //  return view('auth.userAI.tags.create', compact('user', 'promptSpace', 'sidebar', 'tags'));
-        return view('auth.userAI.activity.create', compact('user'));
+       $user = Auth::User();
+       $action = Action::find($id);
+  
+        return view('auth.userAI.activity.create', compact('user', 'action'));
+    
     }
 
     /**

@@ -40,7 +40,7 @@
                                 <select class="form-select select" name="action_id" id="action_id">
                                 <option value="">-</option>
                                 @foreach ($actions as $action)
-                                    <option value="{{ $action->id }}">{{ $action->title }}</option>
+                                    <option value="{{ $action->id }}">{{ $action->number }} - {{ $action->title }}</option>
                                 @endforeach
                                 </select>
                             </div>

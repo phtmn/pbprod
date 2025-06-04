@@ -45,7 +45,7 @@
                                     <option value="">Selecione...</option>
                                     @foreach ($actions as $action)
                                     <option value="{{ $action->id }}" {{ $planning->action_id == $action->id ? 'selected' : '' }}>
-                                        {{ $action->title }}
+                                       {{ $action->number }} - {{ $action->title }}
                                     </option>
                                     @endforeach
                                 </select>
